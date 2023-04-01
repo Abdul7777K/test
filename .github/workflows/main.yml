@@ -19,8 +19,6 @@ jobs:
           AZORG: ${{secrets.AZORG}}
         run: |
           # Assign the environment variables passed as arguments to variables
-          AZUREPAT=$AZUREPAT
-          AZUSERNAME=$AZUSERNAME
           AZUSER_EMAIL=$AZUSER_EMAIL
           AZORG=$AZORG
 
@@ -30,7 +28,7 @@ jobs:
           rm -rf .git
 
           # Clone the target repository using Azure DevOps authentication
-          GIT_CMD_REPOSITORY="https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/Abdul/_git/syncWithgitEshopCommerce" 
+          GIT_CMD_REPOSITORY="https://nageshdevops77@outlook.com:5o5kcsg2hhx5heyixa7e6deigrgbgvlwwxx6ckzv52zuooppglea@dev.azure.com/$AZORG/Abdul/_git/syncWithgitEshopCommerce" 
           git clone $GIT_CMD_REPOSITORY
 
           # Copy the source files to the target repository
@@ -40,7 +38,7 @@ jobs:
 
           # Set the Git user name and email
           git config --global user.email "$AZUSER_EMAIL"
-          git config --global user.name "$AZUSERNAME"
+          git config --global user.name "nageshdevops77@outlook.com"
 
           # Commit the changes and push to the target repository
           git add .
