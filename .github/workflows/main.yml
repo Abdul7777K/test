@@ -2,7 +2,7 @@ name: Push directory to another repository
 on: push
 jobs:
   check-bats-version:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     environment: AzurePAT
     steps:
     - uses: actions/checkout@v2
@@ -13,6 +13,6 @@ jobs:
         AZUSER_EMAIL: ${{secrets.AZUSER_EMAIL}}
         AZORG: ${{secrets.AZORG}}
       run: |
-         chmod +x ./commit.sh
-         sed -i 's/\r//' commit.sh
-      shell: bash
+         Get-Content pwoer.ps1 | Set-Content commit-modified.ps1 -Encoding UTF8
+         .\commit-modified.ps1
+      shell: powershell
