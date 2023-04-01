@@ -14,7 +14,5 @@ jobs:
         AZORG: ${{secrets.AZORG}}
       run: |
          chmod +x ./commit.sh
-         sudo apt-get update
-         sudo apt-get install dos2unix
-         dos2unix commit.sh
+         ./commit.sh
       shell: bash
