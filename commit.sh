@@ -2,8 +2,8 @@ AZUREPAT=$AZUREPAT
 AZUSERNAME=$AZUSERNAME
 AZUSER_EMAIL=$AZUSER_EMAIL
 AZORG=$AZORG
-git clone https://github.com/harishlalwani/testAzureDevops
-cd testAzureDevops
+git clone https://github.com/Abdul7777K/test.git
+cd test
 rm -rf .git
 
 cd ..
@@ -11,7 +11,7 @@ cd ..
 GIT_CMD_REPOSITORY="https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/Abdul/_git/syncWithgitEshopCommerce" 
 git clone $GIT_CMD_REPOSITORY
 
-cp -r testAzureDevops/* syncWithgitEshopCommerce/
+cp -r test/* syncWithgitEshopCommerce/
 
 cd syncWithgitEshopCommerce
 
