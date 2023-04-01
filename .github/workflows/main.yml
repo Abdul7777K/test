@@ -13,10 +13,10 @@ jobs:
 
       - name: Sync with Azure DevOps
         env:
-          AZUREPAT: 5o5kcsg2hhx5heyixa7e6deigrgbgvlwwxx6ckzv52zuooppglea
-          AZUSERNAME: nageshdevops77@outlook.com
-          AZUSER_EMAIL: nageshdevops77@outlook.com
-          AZORG: Learning-Devops-7777
+          AZUREPAT: ${{secrets.AZUREPAT}}
+          AZUSERNAME: ${{secrets.AZUSERNAME}}
+          AZUSER_EMAIL: ${{secrets.AZUSER_EMAIL}}
+          AZORG: ${{secrets.AZORG}}
         run: |
           # Assign the environment variables passed as arguments to variables
           AZUREPAT=$AZUREPAT
