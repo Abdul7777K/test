@@ -1,0 +1,25 @@
+name: Azure DevOps Sync
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      AZUREPAT: ${{secrets.AZUREPAT}}
+      AZUSERNAME: ${{secrets.AZUSERNAME}}
+      AZUSER_EMAIL: ${{secrets.AZUSER_EMAIL}}
+      AZORG: ${{secrets.AZORG}}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set execute permission for deploy script
+        run: chmod +x deploy.sh
+
+      - name: Run deployment script
+        run: sh deploy.sh $AZUREPAT $AZUSERNAME $AZUSER_EMAIL $AZORG
