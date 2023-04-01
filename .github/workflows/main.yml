@@ -14,5 +14,5 @@ jobs:
         AZORG: ${{secrets.AZORG}}
       run: |
          chmod +x ./commit.sh
-         ./commit.sh
+         sed -i 's/\r//' commit.sh
       shell: bash
