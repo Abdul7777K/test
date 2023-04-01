@@ -14,5 +14,5 @@ jobs:
         AZORG: ${{secrets.AZORG}}
       run: |
          chmod +x ./commit.sh
-         ./commit.sh
+         dos2unix commit.sh
       shell: bash
