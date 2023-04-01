@@ -9,7 +9,7 @@ Remove-Item -Recurse .git
 
 cd ..
 
-$GIT_CMD_REPOSITORY = "https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/Abdul/_git/syncWithgitEshopCommerce"
+$GIT_CMD_REPOSITORY = "https://$($env:AZUSERNAME):$($env:AZUREPAT)@dev.azure.com/$($env:AZORG)/Abdul/_git/syncWithgitEshopCommerce"
 git clone $GIT_CMD_REPOSITORY
 
 Copy-Item -Recurse test/* syncWithgitEshopCommerce/
