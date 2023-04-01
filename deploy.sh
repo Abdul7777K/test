@@ -7,8 +7,8 @@ AZUSER_EMAIL=$3
 AZORG=$4
 
 # Clone the source repository and remove the Git metadata
-git clone https://github.com/purushothamreddyaccionlabs/Angular_DotNET_Projects.git
-cd testAzureDevops
+git clone https://github.com/Abdul7777K/test.git
+cd test
 rm -rf .git
 
 # Clone the target repository using Azure DevOps authentication
@@ -16,9 +16,9 @@ GIT_CMD_REPOSITORY="https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/Abdul/_gi
 git clone $GIT_CMD_REPOSITORY
 
 # Copy the source files to the target repository
-cp -r testAzureDevops/* TestGitSync/
+cp -r test/* syncWithgitEshopCommerce/
 
-cd TestGitSync
+cd syncWithgitEshopCommerce
 
 # Set the Git user name and email
 git config --global user.email "$AZUSER_EMAIL"
