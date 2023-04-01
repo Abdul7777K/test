@@ -1,48 +1,18 @@
-name: Sync with Azure DevOps
-
-on:
-  push:
-    branches: [ main ]
-
+name: Push directory to another repository
+on: push
 jobs:
-  sync:
+  check-bats-version:
     runs-on: ubuntu-latest
+    environment: AzurePAT
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-
-      - name: Sync with Azure DevOps
-        env:
-          AZUREPAT: ${{secrets.AZUREPAT}}
-          AZUSERNAME: ${{secrets.AZUSERNAME}}
-          AZUSER_EMAIL: ${{secrets.AZUSER_EMAIL}}
-          AZORG: ${{secrets.AZORG}}
-        run: |
-          # Assign the environment variables passed as arguments to variables
-          AZUREPAT=$AZUREPAT
-          AZUSERNAME=$AZUSERNAME
-          AZUSER_EMAIL=$AZUSER_EMAIL
-          AZORG=$AZORG
-
-          # Clone the source repository and remove the Git metadata
-          git clone https://github.com/Abdul7777K/test.git
-          cd test
-          rm -rf .git
-
-          # Clone the target repository using Azure DevOps authentication
-          GIT_CMD_REPOSITORY="https://${{secrets.AZUSERNAME}}:${{secrets.AZUREPAT}}@dev.azure.com/${{secrets.AZORG}}/Abdul/_git/syncWithgitEshopCommerce" 
-          git clone $GIT_CMD_REPOSITORY
-
-          # Copy the source files to the target repository
-          cp -r test/* syncWithgitEshopCommerce/
-
-          cd syncWithgitEshopCommerce
-
-          # Set the Git user name and email
-          git config --global user.email "$AZUSER_EMAIL"
-          git config --global user.name "$AZUSERNAME"
-
-          # Commit the changes and push to the target repository
-          git add .
-          git commit -m "sync from git to azure"
-          git push
+    - uses: actions/checkout@v2
+    - name: Run script file
+      env:
+        AZUREPAT: ${{secrets.AZUREPAT}}
+        AZUSERNAME: ${{secrets.AZUSERNAME}}
+        AZUSER_EMAIL: ${{secrets.AZUSER_EMAIL}}
+        AZORG: ${{secrets.AZORG}}
+      run: |
+         chmod +x ./commit.sh
+         ./commit.sh
+      shell: bash
